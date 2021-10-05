@@ -1619,6 +1619,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@stitches/react@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.2.tgz#ac4fa74c17f72af4d2176d1494b5a6cb101d05ea"
+  integrity sha512-MkkE6ExcNbt67Pkj2SG3NdUD/lgytv6Tl8IEm2m8rphk1/8S03VBxKbJ/YI+c8Bo7vWeX71l2Ytxjj0TrBvAhA==
+
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-1.4.2.tgz#e6786b6af5799f82f7ab3a82e53f6182d2b91a58"

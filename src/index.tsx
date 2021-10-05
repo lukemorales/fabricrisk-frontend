@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.css';
-
 import { IS_MSW_ENABLED } from './constants';
 import { App } from './app';
 

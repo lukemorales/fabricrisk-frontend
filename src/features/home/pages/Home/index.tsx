@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { authActions } from '../../../auth/reducer';
 import { selectAuthenticatedData } from '../../../auth/reducer/selectors';
 import { useFabricDispatch, useFabricSelector } from '../../../../app/store';
+import { Button } from '../../../../components';
 
 export const Home = () => {
   const dispatch = useFabricDispatch();
@@ -33,9 +34,14 @@ export const Home = () => {
       </p>
       <p>{`This application is running on ${workDirectory}.`}</p>
 
-      <button type="button" onClick={handleLogout}>
+      <Button
+        variant="secondary"
+        type="button"
+        onClick={handleLogout}
+        css={{ marginTop: 20 }}
+      >
         Logout
-      </button>
+      </Button>
     </div>
   );
 };

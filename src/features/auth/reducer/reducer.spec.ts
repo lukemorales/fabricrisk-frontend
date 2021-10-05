@@ -3,23 +3,15 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { AuthState } from './types';
 import { LoginResponsePayload } from '../types';
 
-import { authActions, authReducer } from '.';
+import { authActions, authReducer, INITIAL_STATE } from '.';
 
 describe('auth | reducer', () => {
   let result: AuthState;
 
-  const initialState: AuthState = {
-    isAuthenticated: false,
-    status: 'idle',
-    timestamp: '',
-    user: '',
-    workDirectory: '',
-  };
-
   it('returns the initial state', async () => {
     result = authReducer(undefined, { type: 'unknown' });
 
-    expect(result).toEqual<AuthState>(initialState);
+    expect(result).toEqual<AuthState>(INITIAL_STATE);
   });
 
   it('resets the state on logout action dispatch', async () => {
@@ -33,14 +25,14 @@ describe('auth | reducer', () => {
 
     result = authReducer(futureState, authActions.logout);
 
-    expect(result).toEqual<AuthState>(initialState);
+    expect(result).toEqual<AuthState>(INITIAL_STATE);
   });
 
   it('sets loading to true when authenticating user', async () => {
-    result = authReducer(initialState, authActions.authenticateUser.pending);
+    result = authReducer(INITIAL_STATE, authActions.authenticateUser.pending);
 
     expect(result).toEqual<AuthState>({
-      ...initialState,
+      ...INITIAL_STATE,
       status: 'loading',
     });
   });
@@ -60,10 +52,10 @@ describe('auth | reducer', () => {
       },
     );
 
-    result = authReducer(initialState, rejectedAction);
+    result = authReducer(INITIAL_STATE, rejectedAction);
 
     expect(result).toEqual<AuthState>({
-      ...initialState,
+      ...INITIAL_STATE,
       status: 'failed',
       error: 'Invalid credentials',
     });
@@ -79,7 +71,7 @@ describe('auth | reducer', () => {
       },
     };
 
-    result = authReducer(initialState, action);
+    result = authReducer(INITIAL_STATE, action);
 
     expect(result).toEqual<AuthState>({
       status: 'successful',

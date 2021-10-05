@@ -4,8 +4,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
+import * as S from './styles';
 import { authSchema } from './schema';
-import { Input } from '../../../../components';
+import { Input, Button } from '../../../../components';
 import { useFabricDispatch, useFabricSelector } from '../../../../app/store';
 import { authActions } from '../../reducer';
 import { LoginRequestBody } from '../../types';
@@ -32,6 +33,7 @@ export const Login = () => {
   const isAuthenticated = useFabricSelector(selectIsAuthenticated);
 
   const formMethods = useForm({
+    reValidateMode: 'onSubmit',
     resolver: yupResolver(authSchema),
   });
 
@@ -46,7 +48,7 @@ export const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div data-testid="login-page">
+    <S.Container data-testid="login-page">
       <FormProvider {...formMethods}>
         <h1>Login Page</h1>
 
@@ -68,9 +70,11 @@ export const Login = () => {
             label="Password"
           />
 
-          <button type="submit">{BUTTON_TEXTS[authStatus]}</button>
+          <Button type="submit" css={{ marginTop: 20 }}>
+            {BUTTON_TEXTS[authStatus]}
+          </Button>
         </form>
       </FormProvider>
-    </div>
+    </S.Container>
   );
 };

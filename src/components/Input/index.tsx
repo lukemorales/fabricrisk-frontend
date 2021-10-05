@@ -2,6 +2,8 @@ import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 
 import { FieldError, useFormContext } from 'react-hook-form';
 
+import * as S from './styles';
+
 type InputElementProps = ComponentPropsWithoutRef<'input'> & {
   name: string;
   label: string;
@@ -35,21 +37,22 @@ export const Input = (props: InputProps) => {
   }, [inputValue]);
 
   return (
-    <label htmlFor={identifier} className={className} {...attrs.tabIndex}>
-      <input
+    <S.Label htmlFor={identifier} className={className} {...attrs.tabIndex}>
+      <span>{label}</span>
+
+      <S.Input
         id={identifier}
         type={type}
         disabled={disabled}
         readOnly={disabled}
+        filled={isFilled}
         {...attrs}
         {...register(name, {
           required,
         })}
       />
 
-      <span>{label}</span>
-
-      {inputError && <div>{inputError.message}</div>}
-    </label>
+      {inputError && <S.ErrorMessage>{inputError.message}</S.ErrorMessage>}
+    </S.Label>
   );
 };
