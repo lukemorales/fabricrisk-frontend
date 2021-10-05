@@ -1,5 +1,13 @@
-import { RouteObject } from 'react-router';
+/* eslint-disable radar/prefer-immediate-return */
+import { RouteObject, useRoutes } from 'react-router';
 
 import { authRoutes } from '../../features/auth';
+import { homeRoutes } from '../../features/home';
 
-export const routes: RouteObject[] = [authRoutes].flat();
+const routes: RouteObject[] = [homeRoutes, authRoutes].flat();
+
+export const AppRoutes = () => {
+  const route = useRoutes(routes);
+
+  return route;
+};

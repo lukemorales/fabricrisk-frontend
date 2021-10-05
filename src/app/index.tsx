@@ -1,6 +1,8 @@
-import { useRoutes } from 'react-router-dom';
-
 import { Providers } from './components';
-import { routes } from './routes';
+import { AppRoutes } from './routes';
 
-export const App = () => <Providers>{useRoutes(routes)}</Providers>;
+export const App = () => (
+  <Providers>
+    <AppRoutes />
+  </Providers>
+);
