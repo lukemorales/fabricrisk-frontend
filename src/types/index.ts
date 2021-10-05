@@ -1,1 +1,3 @@
-export type LoginRequestBody = Record<'username' | 'password', string>;
+export type RequestErrorPayload = Record<'error', Record<'message', string>>;
+
+export type ApiRequest<T> = T | RequestErrorPayload;

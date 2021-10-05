@@ -1,4 +1,7 @@
-type CustomEnvVars = 'REACT_APP_BASE_URL';
+type CustomEnvVars =
+  | 'REACT_APP_BASE_URL'
+  | 'REACT_APP_VALID_USERNAME'
+  | 'REACT_APP_VALID_PASSWORD';
 
 type FeatureFlagsEnvVars = 'REACT_APP_MSW_ENABLED';
 
