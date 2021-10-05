@@ -1,11 +1,12 @@
 import { rest } from 'msw';
 
+import { composeEndpoint } from '../../../utils';
 import { ApiRequest } from '../../../services/api/types';
 import { LoginRequestBody, LoginResponsePayload } from '../types';
 
 export const authHandlers = [
   rest.post<LoginRequestBody, ApiRequest<LoginResponsePayload>>(
-    '/login',
+    composeEndpoint('/login'),
     (req, res, ctx) => {
       const { username, password } = req.body;
 
@@ -30,6 +31,7 @@ export const authHandlers = [
         ctx.json({
           user: process.env.REACT_APP_VALID_USERNAME,
           timestamp: new Date().toISOString(),
+          workDirectory: 'fabricrisk/frontend',
         }),
       );
     },

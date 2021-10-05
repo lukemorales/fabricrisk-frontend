@@ -5,7 +5,7 @@ import { LoginResponsePayload } from '../types';
 
 import { authActions, authReducer } from '.';
 
-describe('features | auth | reducer', () => {
+describe('auth | reducer', () => {
   let result: AuthState;
 
   const initialState: AuthState = {
@@ -13,6 +13,7 @@ describe('features | auth | reducer', () => {
     status: 'idle',
     timestamp: '',
     user: '',
+    workDirectory: '',
   };
 
   it('returns the initial state', async () => {
@@ -27,6 +28,7 @@ describe('features | auth | reducer', () => {
       status: 'idle',
       user: 'John Doe',
       timestamp: new Date().toISOString(),
+      workDirectory: 'work-directory/fake',
     };
 
     result = authReducer(futureState, authActions.logout);
@@ -73,16 +75,18 @@ describe('features | auth | reducer', () => {
       payload: {
         timestamp: 'fake-timestamp',
         user: 'fake-user',
+        workDirectory: 'fake/work-directory',
       },
     };
 
     result = authReducer(initialState, action);
 
     expect(result).toEqual<AuthState>({
-      status: 'idle',
+      status: 'successful',
       isAuthenticated: true,
       user: 'fake-user',
       timestamp: 'fake-timestamp',
+      workDirectory: 'fake/work-directory',
     });
   });
 });

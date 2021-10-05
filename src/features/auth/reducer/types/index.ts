@@ -1,7 +1,8 @@
 export type AuthState = {
   user: string;
   timestamp: string;
-  status: 'idle' | 'loading' | 'failed';
+  workDirectory: string;
+  status: 'idle' | 'loading' | 'successful' | 'failed';
   isAuthenticated: boolean;
   error?: string;
 };

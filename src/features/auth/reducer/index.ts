@@ -6,6 +6,7 @@ import { AuthState } from './types';
 const INITIAL_STATE: AuthState = {
   user: '',
   timestamp: '',
+  workDirectory: '',
   status: 'idle',
   isAuthenticated: false,
   error: undefined,
@@ -26,10 +27,11 @@ export const authSlice = createSlice({
         draft.status = 'loading';
       })
       .addCase(authenticateUser.fulfilled, (draft, { payload }) => {
-        draft.status = 'idle';
+        draft.status = 'successful';
         draft.isAuthenticated = true;
         draft.user = payload.user;
         draft.timestamp = payload.timestamp;
+        draft.workDirectory = payload.workDirectory;
       })
       .addCase(authenticateUser.rejected, (draft, action) => {
         draft.status = 'failed';
