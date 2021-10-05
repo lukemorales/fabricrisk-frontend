@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 
 import { LoginResponsePayload, LoginRequestBody } from '../../types';
 import { loginRequest } from '../../requests';
-import { RequestErrorPayload } from '../../../../types';
+import { RequestErrorPayload } from '../../../../services/api/types';
 
 export const authenticateUser = createAsyncThunk<
   LoginResponsePayload,

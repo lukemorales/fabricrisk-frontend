@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-import { ApiRequest } from '../../../types';
+import { ApiRequest } from '../../../services/api/types';
 import { LoginRequestBody, LoginResponsePayload } from '../types';
 
 export const authHandlers = [
