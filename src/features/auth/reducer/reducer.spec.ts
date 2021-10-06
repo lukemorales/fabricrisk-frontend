@@ -19,6 +19,7 @@ describe('auth | reducer', () => {
       isAuthenticated: true,
       status: 'idle',
       user: 'John Doe',
+      token: 'fake-bearer-token',
       timestamp: new Date().toISOString(),
       workDirectory: 'work-directory/fake',
     };
@@ -46,6 +47,7 @@ describe('auth | reducer', () => {
         password: '',
       },
       {
+        status: 401,
         error: {
           message: 'Invalid credentials',
         },
@@ -68,6 +70,7 @@ describe('auth | reducer', () => {
         timestamp: 'fake-timestamp',
         user: 'fake-user',
         workDirectory: 'fake/work-directory',
+        token: 'fake-token',
       },
     };
 
@@ -78,6 +81,7 @@ describe('auth | reducer', () => {
       isAuthenticated: true,
       user: 'fake-user',
       timestamp: 'fake-timestamp',
+      token: 'fake-token',
       workDirectory: 'fake/work-directory',
     });
   });

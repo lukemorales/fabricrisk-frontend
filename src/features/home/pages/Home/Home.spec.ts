@@ -17,6 +17,7 @@ describe('auth | pages | <Login />', () => {
         user: 'fake-user',
         timestamp: '2021-10-05T15:28:43.551',
         workDirectory: 'fake/work-directory',
+        token: 'fake-token',
       },
     };
 
